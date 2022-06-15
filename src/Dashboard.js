@@ -34,22 +34,24 @@ class Dashboard extends React.Component
     };
 
     render(){
-        const { users } = this.state;
+        const { users, selectedUser } = this.state;
 
         return (
         <div className="container">
             <div className="row">
                 <section className="col-sm">User List
-                 <ul className="list-group">
+                {users.length === 0 ? "Loading..." :  <ul className="list-group">
                      {users.map((user)=>{
-                         return <li key={user.id} className="list-group-item" onClick={()=>{
+                         return <li key={user.id} className= {`list-group-item ${user.id === selectedUser.id ? "active" : ""}`}
+                          onClick={()=>{
                              this.changeSelectedUser(user);
                          }}>
                              {user.name}</li>
                      })}
                    
-                </ul>
+                </ul>}
                </section>
+                
                  <section className="col-md">Post Detalis</section>
             </div>
         </div>
