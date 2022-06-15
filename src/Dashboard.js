@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import PostsList from "./PostsList"
 
 class Dashboard extends React.Component 
 {
@@ -13,7 +14,7 @@ class Dashboard extends React.Component
     }*/
     state = {
          users:[],
-         selectedUser: ""
+         selectedUser: null
     };
 
     componentDidMount(){
@@ -52,7 +53,10 @@ class Dashboard extends React.Component
                 </ul>}
                </section>
                 
-                 <section className="col-md">Post Detalis</section>
+                 <section className="col-md">
+                     {selectedUser != null && <PostsList user={selectedUser}/>}
+                     
+                 </section>
             </div>
         </div>
         );
